@@ -1,0 +1,98 @@
+.root {
+  display: inline-flex;
+  min-height: var(--button-height);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding-inline: var(--button-padding);
+  color: var(--button-color);
+  background: var(--button-bg);
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.root:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px var(--button-shadow);
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--button-focus);
+  outline-offset: 3px;
+}
+
+.root:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
+.sm {
+  --button-height: 36px;
+  --button-padding: 14px;
+}
+
+.md {
+  --button-height: 44px;
+  --button-padding: 18px;
+}
+
+.lg {
+  --button-height: 52px;
+  --button-padding: 24px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.primary.neutral {
+  --button-bg: #f6f7f9;
+  --button-color: #090a0d;
+  --button-focus: #ffffff;
+  --button-shadow: rgba(255, 255, 255, 0.14);
+}
+
+.primary.kraftchat {
+  --button-bg: var(--kraftchat-accent);
+  --button-color: #ffffff;
+  --button-focus: var(--kraftchat-accent);
+  --button-shadow: rgba(255, 59, 79, 0.25);
+}
+
+.primary.kraftscore {
+  --button-bg: var(--kraftscore-accent);
+  --button-color: #06130d;
+  --button-focus: var(--kraftscore-accent);
+  --button-shadow: rgba(57, 245, 166, 0.22);
+}
+
+.secondary {
+  --button-bg: rgba(255, 255, 255, 0.08);
+  --button-color: var(--color-text-primary);
+  --button-focus: rgba(255, 255, 255, 0.65);
+  --button-shadow: rgba(0, 0, 0, 0.22);
+  border-color: var(--color-border);
+}
+
+.ghost {
+  --button-bg: transparent;
+  --button-color: var(--color-text-secondary);
+  --button-focus: rgba(255, 255, 255, 0.65);
+  --button-shadow: transparent;
+}
+
+.ghost:hover,
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.label {
+  --typography-color: var(--button-color);
+}

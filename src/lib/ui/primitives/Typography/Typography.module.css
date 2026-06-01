@@ -1,0 +1,154 @@
+.root {
+  margin: 0;
+  color: var(--typography-color);
+  font-size: var(--typography-size);
+  font-weight: var(--typography-weight);
+  line-height: var(--typography-line-height);
+  letter-spacing: var(--typography-letter-spacing, 0);
+  text-align: var(--typography-align);
+  text-transform: var(--typography-transform);
+}
+
+.display {
+  --typography-line-height: 0.95;
+  --typography-letter-spacing: 0;
+}
+
+.heading {
+  --typography-line-height: 1.06;
+  --typography-letter-spacing: 0;
+}
+
+.subtitle {
+  --typography-line-height: 1.45;
+}
+
+.paragraph {
+  --typography-line-height: 1.7;
+}
+
+.label {
+  --typography-line-height: 1.3;
+}
+
+.caption {
+  --typography-line-height: 1.45;
+}
+
+.overline {
+  --typography-line-height: 1.2;
+  --typography-letter-spacing: 0.08em;
+  --typography-transform: uppercase;
+}
+
+.xs {
+  --typography-size: 0.75rem;
+}
+
+.sm {
+  --typography-size: 0.875rem;
+}
+
+.md {
+  --typography-size: 1rem;
+}
+
+.lg {
+  --typography-size: 1.125rem;
+}
+
+.xl {
+  --typography-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+.\32xl {
+  --typography-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.\33xl {
+  --typography-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.\34xl {
+  --typography-size: clamp(2.4rem, 6vw, 4.8rem);
+}
+
+.\35xl {
+  --typography-size: clamp(3rem, 9vw, 7rem);
+}
+
+.regular {
+  --typography-weight: 400;
+}
+
+.medium {
+  --typography-weight: 500;
+}
+
+.semibold {
+  --typography-weight: 650;
+}
+
+.bold {
+  --typography-weight: 800;
+}
+
+.primary {
+  --typography-color: var(--color-text-primary);
+}
+
+.secondary {
+  --typography-color: var(--color-text-secondary);
+}
+
+.muted {
+  --typography-color: var(--color-text-muted);
+}
+
+.inverse {
+  --typography-color: #08090c;
+}
+
+.kraftchat {
+  --typography-color: var(--kraftchat-accent);
+}
+
+.kraftscore {
+  --typography-color: var(--kraftscore-accent);
+}
+
+.danger {
+  --typography-color: #ff5d6d;
+}
+
+.success {
+  --typography-color: #70f0b3;
+}
+
+.left {
+  --typography-align: left;
+}
+
+.center {
+  --typography-align: center;
+}
+
+.right {
+  --typography-align: right;
+}
+
+.none {
+  --typography-transform: none;
+}
+
+.uppercase {
+  --typography-transform: uppercase;
+}
+
+.lowercase {
+  --typography-transform: lowercase;
+}
+
+.capitalize {
+  --typography-transform: capitalize;
+}

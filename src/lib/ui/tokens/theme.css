@@ -1,0 +1,26 @@
+:root {
+  --color-bg: #08090c;
+  --color-bg-soft: #101217;
+  --color-bg-elevated: #171a21;
+  --color-text-primary: #f6f7f9;
+  --color-text-secondary: #b8beca;
+  --color-text-muted: #777f8f;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 42px rgba(255, 255, 255, 0.08);
+
+  --transition-fast: 160ms ease;
+  --transition-base: 240ms ease;
+
+  --kraftchat-accent: #ff3b4f;
+  --kraftchat-accent-soft: rgba(255, 59, 79, 0.16);
+  --kraftscore-accent: #39f5a6;
+  --kraftscore-accent-soft: rgba(57, 245, 166, 0.14);
+}

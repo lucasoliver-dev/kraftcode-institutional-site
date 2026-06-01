@@ -1,0 +1,30 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text-primary);
+}
+
+.mark {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.text {
+  display: inline-flex;
+}
+
+.sm .mark {
+  width: 28px;
+  height: 28px;
+}
+
+.md .mark {
+  width: 36px;
+  height: 36px;
+}
+
+.lg .mark {
+  width: 48px;
+  height: 48px;
+}

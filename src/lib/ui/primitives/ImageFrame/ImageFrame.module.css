@@ -1,0 +1,60 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--frame-border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, var(--frame-glow), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  box-shadow: var(--shadow-soft);
+}
+
+.root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.content > * {
+  display: block;
+  width: 100%;
+}
+
+.ratio169 {
+  aspect-ratio: 16 / 9;
+}
+
+.ratio43 {
+  aspect-ratio: 4 / 3;
+}
+
+.ratio11 {
+  aspect-ratio: 1 / 1;
+}
+
+.auto {
+  min-height: 220px;
+}
+
+.neutral {
+  --frame-border: var(--color-border);
+  --frame-glow: rgba(255, 255, 255, 0.08);
+}
+
+.kraftchat {
+  --frame-border: rgba(255, 59, 79, 0.28);
+  --frame-glow: var(--kraftchat-accent-soft);
+}
+
+.kraftscore {
+  --frame-border: rgba(57, 245, 166, 0.24);
+  --frame-glow: var(--kraftscore-accent-soft);
+}

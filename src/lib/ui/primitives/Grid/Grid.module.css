@@ -1,0 +1,37 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.sm {
+  gap: 12px;
+}
+
+.md {
+  gap: 20px;
+}
+
+.lg {
+  gap: 28px;
+}
+
+@media (min-width: 760px) {
+  .columns2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .columns3,
+  .columns4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .columns3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .columns4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

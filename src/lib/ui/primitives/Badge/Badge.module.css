@@ -1,0 +1,31 @@
+.root {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border: 1px solid var(--badge-border);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: var(--badge-bg);
+}
+
+.text {
+  --typography-color: var(--badge-color);
+}
+
+.neutral {
+  --badge-bg: rgba(255, 255, 255, 0.08);
+  --badge-border: var(--color-border);
+  --badge-color: var(--color-text-secondary);
+}
+
+.kraftchat {
+  --badge-bg: var(--kraftchat-accent-soft);
+  --badge-border: rgba(255, 59, 79, 0.28);
+  --badge-color: #ffb8c0;
+}
+
+.kraftscore {
+  --badge-bg: var(--kraftscore-accent-soft);
+  --badge-border: rgba(57, 245, 166, 0.28);
+  --badge-color: #a9ffd8;
+}

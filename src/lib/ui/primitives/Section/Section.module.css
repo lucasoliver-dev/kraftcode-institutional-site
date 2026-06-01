@@ -1,0 +1,42 @@
+.root {
+  position: relative;
+  overflow: hidden;
+}
+
+.default {
+  background: var(--color-bg);
+}
+
+.muted {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.08), transparent 28%),
+    var(--color-bg-soft);
+}
+
+.kraftchat {
+  background:
+    radial-gradient(circle at 80% 20%, var(--kraftchat-accent-soft), transparent 30%),
+    var(--color-bg);
+}
+
+.kraftscore {
+  background:
+    radial-gradient(circle at 80% 20%, var(--kraftscore-accent-soft), transparent 32%),
+    var(--color-bg);
+}
+
+.sm {
+  padding-block: 48px;
+}
+
+.md {
+  padding-block: 72px;
+}
+
+.lg {
+  padding-block: 96px;
+}
+
+.xl {
+  padding-block: 128px;
+}

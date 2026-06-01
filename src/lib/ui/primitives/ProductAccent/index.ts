@@ -1,0 +1,1 @@
+export { ProductAccent } from "./ProductAccent";

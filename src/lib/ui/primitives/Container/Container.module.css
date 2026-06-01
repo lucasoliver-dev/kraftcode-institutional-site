@@ -1,0 +1,26 @@
+.root {
+  width: min(100% - 32px, var(--container-size));
+  margin-inline: auto;
+}
+
+.sm {
+  --container-size: 760px;
+}
+
+.md {
+  --container-size: 960px;
+}
+
+.lg {
+  --container-size: 1120px;
+}
+
+.xl {
+  --container-size: 1280px;
+}
+
+@media (min-width: 760px) {
+  .root {
+    width: min(100% - 64px, var(--container-size));
+  }
+}

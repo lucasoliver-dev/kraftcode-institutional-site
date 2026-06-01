@@ -1,0 +1,63 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base);
+}
+
+.root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top right, var(--accent-soft), transparent 38%);
+  opacity: 0.9;
+}
+
+.root:hover {
+  transform: translateY(-3px);
+}
+
+.default {
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.elevated {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.outline {
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: var(--shadow-glow);
+  backdrop-filter: blur(18px);
+}
+
+.neutral {
+  --accent-soft: rgba(255, 255, 255, 0.08);
+}
+
+.kraftchat {
+  --accent-soft: var(--kraftchat-accent-soft);
+}
+
+.kraftscore {
+  --accent-soft: var(--kraftscore-accent-soft);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}

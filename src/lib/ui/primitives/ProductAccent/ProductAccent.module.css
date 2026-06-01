@@ -1,0 +1,26 @@
+.root {
+  position: relative;
+  isolation: isolate;
+}
+
+.root::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, var(--accent), transparent 30%),
+    radial-gradient(circle at 80% 20%, var(--accent-soft), transparent 34%);
+  opacity: 0.8;
+}
+
+.kraftchat {
+  --accent: rgba(255, 59, 79, 0.55);
+  --accent-soft: var(--kraftchat-accent-soft);
+}
+
+.kraftscore {
+  --accent: rgba(57, 245, 166, 0.48);
+  --accent-soft: var(--kraftscore-accent-soft);
+}
