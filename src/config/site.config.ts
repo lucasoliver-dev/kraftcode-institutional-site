@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Kraftcode",
   description: "Software, IA e produtos digitais escaláveis.",
   founder: "Lucas Oliveira",
-  url: "https://kraftcode.com.br",
+  url: "https://www.kraftcode.com.br",
   products: [
     {
       name: "Kraftchat",

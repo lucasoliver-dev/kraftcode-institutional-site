@@ -13,10 +13,10 @@ const instrumentSans = Instrument_Sans({
 });
 
 const socialImage = {
-  url: "/images/products/kraftflow-automation-dashboard.png",
-  width: 1672,
-  height: 941,
-  alt: "Dashboard Kraftflow Automation da Kraftcode",
+  url: `${siteConfig.url}/og/kraftcode-og-v2.png`,
+  width: 1200,
+  height: 630,
+  alt: "Kraftcode - Software, IA e produtos digitais escaláveis",
 };
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    images: [socialImage],
+    images: [socialImage.url],
     locale: "pt_BR",
     type: "website",
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [socialImage],
+    images: [socialImage.url],
   },
 };
 
