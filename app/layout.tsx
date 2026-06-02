@@ -12,6 +12,13 @@ const instrumentSans = Instrument_Sans({
   display: "swap",
 });
 
+const socialImage = {
+  url: "/images/products/kraftflow-automation-dashboard.png",
+  width: 1672,
+  height: 941,
+  alt: "Dashboard Kraftflow Automation da Kraftcode",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -19,12 +26,24 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  alternates: {
+    canonical: siteConfig.url,
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
+    images: [socialImage],
+    locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [socialImage],
   },
 };
 
