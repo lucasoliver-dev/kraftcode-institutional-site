@@ -21,15 +21,6 @@ function getFirstName(name: string) {
   return name.trim().split(/\s+/)[0] || "tudo bem";
 }
 
-function limitEmailText(value: string, maxLength: number) {
-  const normalizedValue = value.replace(/\s+/g, " ").trim();
-
-  if (normalizedValue.length <= maxLength) {
-    return normalizedValue;
-  }
-
-  return `${normalizedValue.slice(0, maxLength).trim()}...`;
-}
 
 function getFromEmail() {
   return process.env.CONTACT_FROM_EMAIL || defaultFromEmail;
@@ -39,12 +30,9 @@ function getLogoUrl() {
   return `${siteConfig.url}/images/logos/email-brand-light.png`;
 }
 
-function getTicketImageUrl() {
-  return `${siteConfig.url}/images/email/proposal-ticket.png`;
-}
 
-function getEmailCss(ticketImageUrl: string) {
-  return emailCss.replaceAll("__TICKET_IMAGE_URL__", ticketImageUrl);
+function getEmailCss() {
+  return emailCss;
 }
 
 type SafeContactProjectData = {
@@ -56,52 +44,34 @@ type SafeContactProjectData = {
   firstName: string;
 };
 
-function renderTicketRow(label: string, value: string) {
+function renderSummaryRow(label: string, value: string, isLast = false) {
   return `
     <tr>
-      <td class="proposal-ticket-row">
-        <p class="proposal-ticket-row-label">${label}</p>
-        <p class="proposal-ticket-row-value">${value}</p>
+      <td class="proposal-summary-row${isLast ? " proposal-summary-row-last" : ""}">
+        <p class="proposal-summary-label">${label}</p>
+        <p class="proposal-summary-value">${value}</p>
       </td>
     </tr>
   `;
 }
 
-function renderProposalTicket(data: SafeContactProjectData) {
-  const ticketImageUrl = getTicketImageUrl();
-
+function renderProposalSummary(data: SafeContactProjectData) {
   return `
-    <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-wrap">
+    <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-summary">
       <tr>
-        <td class="proposal-ticket-background">
-          <table role="presentation" cellpadding="0" cellspacing="0" width="408" height="612" class="proposal-ticket" style="width:408px;max-width:408px;height:612px;table-layout:fixed;background-image:url(\'${ticketImageUrl}\');background-repeat:no-repeat;background-position:center;background-size:408px 612px;background-color:#ffffff;">
-            <tr>
-              <td background="${ticketImageUrl}" width="408" height="612" valign="top" class="proposal-ticket-content" style="width:408px;height:612px;background-image:url(\'${ticketImageUrl}\');background-repeat:no-repeat;background-position:center;background-size:408px 612px;">
-                <table role="presentation" cellpadding="0" cellspacing="0" width="408" height="612" class="proposal-ticket-inner" style="width:408px;max-width:408px;height:612px;table-layout:fixed;">
-                  <tr>
-                    <td class="proposal-ticket-spacer-top" colspan="3"></td>
-                  </tr>
-                  <tr>
-                    <td width="64" class="proposal-ticket-side-space" style="width:64px;min-width:64px;font-size:0;line-height:0;"></td>
-                    <td width="280" valign="top" class="proposal-ticket-body" style="width:280px;max-width:280px;vertical-align:top;">
-                      <p class="proposal-ticket-label">Ticket de proposta</p>
-                      <p class="proposal-ticket-title">Kraftchat</p>
-                      <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-table">
-            ${renderTicketRow("Nome", data.name)}
-            ${renderTicketRow("E-mail", data.email)}
-            ${renderTicketRow("WhatsApp", data.whatsapp)}
-            ${renderTicketRow("Ideia de projeto", data.projectProposal)}
-            ${renderTicketRow("Dúvidas", data.questions)}
-                      </table>
-                    </td>
-                    <td width="64" class="proposal-ticket-side-space" style="width:64px;min-width:64px;font-size:0;line-height:0;"></td>
-                  </tr>
-                  <tr>
-                    <td class="proposal-ticket-spacer-bottom" colspan="3"></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+        <td class="proposal-summary-header">
+          <p class="proposal-summary-eyebrow">Resumo da proposta</p>
+          <h2 class="proposal-summary-title">Informações enviadas</h2>
+        </td>
+      </tr>
+      <tr>
+        <td class="proposal-summary-body">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+            ${renderSummaryRow("Nome", data.name)}
+            ${renderSummaryRow("E-mail", data.email)}
+            ${renderSummaryRow("WhatsApp", data.whatsapp)}
+            ${renderSummaryRow("Ideia de projeto", data.projectProposal)}
+            ${renderSummaryRow("Dúvidas", data.questions, true)}
           </table>
         </td>
       </tr>
@@ -113,13 +83,12 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
   const resend = createResendClient();
   const firstName = getFirstName(data.name);
   const logoUrl = getLogoUrl();
-  const ticketImageUrl = getTicketImageUrl();
   const safe = {
     name: escapeHtml(data.name),
     email: escapeHtml(data.email),
     whatsapp: escapeHtml(data.whatsapp),
-    projectProposal: escapeHtml(limitEmailText(data.projectProposal, 130)),
-    questions: escapeHtml(limitEmailText(data.questions || "não informado", 110)),
+    projectProposal: escapeHtml(data.projectProposal),
+    questions: escapeHtml(data.questions || "não informado"),
     firstName: escapeHtml(firstName),
   };
 
@@ -146,7 +115,7 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
       siteConfig.url,
     ].join("\n"),
     html: `
-      <style>${getEmailCss(ticketImageUrl)}</style>
+      <style>${getEmailCss()}</style>
       <div class="email-root">
         <div class="email-preheader">
           Recebemos sua proposta de projeto e vamos retornar o mais breve possível.
@@ -167,7 +136,7 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
                     <p class="email-copy">Sua proposta de projeto foi registrada com a equipe Kraftcode.</p>
                     <p class="email-copy email-copy-last">Nos próximos passos, vamos avaliar as informações enviadas, entender o melhor caminho para o seu projeto e retornar o mais breve possível pelo contato informado.</p>
 
-                    ${renderProposalTicket(safe)}
+                    ${renderProposalSummary(safe)}
 
                     <table role="presentation" cellpadding="0" cellspacing="0" class="email-signature">
                       <tr>
