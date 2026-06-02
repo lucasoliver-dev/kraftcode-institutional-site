@@ -19,11 +19,14 @@
   },
   "homepage": "https://github.com/lucasoliver-dev/kraftcode-institutional-site#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.107.0",
     "lenis": "^1.3.23",
     "lucide-react": "^1.17.0",
     "next": "^16.2.6",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "resend": "^6.12.4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "25.9.1",

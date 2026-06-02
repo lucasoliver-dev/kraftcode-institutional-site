@@ -1,0 +1,33 @@
+.section {
+  min-height: 70dvh;
+  display: grid;
+  align-items: center;
+}
+
+.content {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  max-width: 42rem;
+}
+
+.brand {
+  width: clamp(9rem, 24vw, 12rem);
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #39f5a6;
+}
+
+.title {
+  --typography-line-height: 1.05;
+}
+
+.text {
+  max-width: 36rem;
+  --typography-line-height: 1.7;
+}

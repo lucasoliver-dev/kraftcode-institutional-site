@@ -1,31 +1,40 @@
 .root {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--color-text-primary);
-}
-
-.mark {
-  display: block;
   flex: 0 0 auto;
+  line-height: 0;
 }
 
-.text {
-  display: inline-flex;
-  white-space: nowrap;
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
-.sm .mark {
-  width: 28px;
-  height: 28px;
+.sm {
+  width: clamp(7rem, 12vw, 8.75rem);
 }
 
-.md .mark {
-  width: 36px;
-  height: 36px;
+.md {
+  width: clamp(8.5rem, 16vw, 10.5rem);
 }
 
-.lg .mark {
-  width: 48px;
-  height: 48px;
+.lg {
+  width: clamp(10rem, 18vw, 12.25rem);
+}
+
+@media (max-width: 35rem) {
+  .sm {
+    width: clamp(6.5rem, 36vw, 8rem);
+  }
+
+  .md {
+    width: clamp(7.5rem, 42vw, 9rem);
+  }
+
+  .lg {
+    width: clamp(8.5rem, 48vw, 10rem);
+  }
 }

@@ -9,6 +9,7 @@ export { Grid } from "./primitives/Grid";
 export { Heading } from "./primitives/Heading";
 export { ImageFrame } from "./primitives/ImageFrame";
 export { Logo } from "./primitives/Logo";
+export { Modal } from "./primitives/Modal";
 export { ProductAccent } from "./primitives/ProductAccent";
 export { Section } from "./primitives/Section";
 export { Text } from "./primitives/Text";
