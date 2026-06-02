@@ -23,7 +23,7 @@ function getFromEmail() {
 }
 
 function getLogoUrl() {
-  return `${siteConfig.url}/images/logos/brand-ligth.png`;
+  return `${siteConfig.url}/images/logos/email-brand-light.png`;
 }
 
 export async function sendContactProposalConfirmationEmail(data: ContactProjectFormData) {
