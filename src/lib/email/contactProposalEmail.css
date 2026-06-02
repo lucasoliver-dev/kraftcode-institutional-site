@@ -90,64 +90,115 @@
 }
 
 .proposal-ticket {
-  width: 100%;
+  width: 408px;
   max-width: 408px;
-  min-height: 612px;
+  height: 612px;
   margin: 0 auto;
   border-collapse: collapse;
-  background: url("__TICKET_IMAGE_URL__") center / 100% 100% no-repeat;
+  table-layout: fixed;
+  background: url("__TICKET_IMAGE_URL__") center / 408px 612px no-repeat;
+  background-color: #ffffff;
   color: #090a0f;
 }
 
 .proposal-ticket-content {
-  padding: 54px 42px 52px;
+  width: 408px;
+  height: 612px;
   font-family: Arial, sans-serif;
-  color: #090a0f;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 408px 612px;
+}
+
+.proposal-ticket-inner {
+  width: 408px;
+  max-width: 408px;
+  height: 612px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.proposal-ticket-spacer-top {
+  height: 108px;
+  line-height: 108px;
+  font-size: 0;
+}
+
+.proposal-ticket-spacer-bottom {
+  height: 42px;
+  line-height: 42px;
+  font-size: 0;
+}
+
+.proposal-ticket-side-space {
+  width: 64px;
+  min-width: 64px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.proposal-ticket-body {
+  width: 280px;
+  max-width: 280px;
+  font-family: Arial, sans-serif;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827;
+  vertical-align: top;
 }
 
 .proposal-ticket-label {
   margin: 0 0 6px;
   font-size: 12px;
   line-height: 1.4;
-  color: #6b7280;
+  color: #6b7280 !important;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  -webkit-text-fill-color: #6b7280;
 }
 
 .proposal-ticket-title {
   margin: 0 0 24px;
   font-size: 28px;
   line-height: 1.2;
-  color: #090a0f;
+  color: #111827 !important;
   font-weight: 800;
+  -webkit-text-fill-color: #111827;
 }
 
 .proposal-ticket-table {
   width: 100%;
   border-collapse: collapse;
-  color: #090a0f;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827;
 }
 
 .proposal-ticket-row {
-  padding: 12px 0;
+  padding: 10px 0;
   border-top: 1px solid #eceff4;
+  vertical-align: top;
 }
 
 .proposal-ticket-row-label {
   margin: 0 0 4px;
   font-size: 11px;
   line-height: 1.4;
-  color: #6b7280;
+  color: #6b7280 !important;
   font-weight: 700;
   text-transform: uppercase;
+  -webkit-text-fill-color: #6b7280;
 }
 
 .proposal-ticket-row-value {
   margin: 0;
   font-size: 15px;
-  line-height: 1.6;
-  color: #090a0f;
+  line-height: 1.5;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .email-signature {

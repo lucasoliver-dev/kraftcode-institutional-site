@@ -21,6 +21,16 @@ function getFirstName(name: string) {
   return name.trim().split(/\s+/)[0] || "tudo bem";
 }
 
+function limitEmailText(value: string, maxLength: number) {
+  const normalizedValue = value.replace(/\s+/g, " ").trim();
+
+  if (normalizedValue.length <= maxLength) {
+    return normalizedValue;
+  }
+
+  return `${normalizedValue.slice(0, maxLength).trim()}...`;
+}
+
 function getFromEmail() {
   return process.env.CONTACT_FROM_EMAIL || defaultFromEmail;
 }
@@ -64,17 +74,31 @@ function renderProposalTicket(data: SafeContactProjectData) {
     <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-wrap">
       <tr>
         <td class="proposal-ticket-background">
-          <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="408" height="612" class="proposal-ticket" style="width:408px;max-width:408px;height:612px;table-layout:fixed;background-image:url(\'${ticketImageUrl}\');background-repeat:no-repeat;background-position:center;background-size:408px 612px;background-color:#ffffff;">
             <tr>
-              <td background="${ticketImageUrl}" class="proposal-ticket-content">
-                <p class="proposal-ticket-label">Ticket de proposta</p>
-                <p class="proposal-ticket-title">Kraftchat</p>
-                <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-table">
+              <td background="${ticketImageUrl}" width="408" height="612" valign="top" class="proposal-ticket-content" style="width:408px;height:612px;background-image:url(\'${ticketImageUrl}\');background-repeat:no-repeat;background-position:center;background-size:408px 612px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" width="408" height="612" class="proposal-ticket-inner" style="width:408px;max-width:408px;height:612px;table-layout:fixed;">
+                  <tr>
+                    <td class="proposal-ticket-spacer-top" colspan="3"></td>
+                  </tr>
+                  <tr>
+                    <td width="64" class="proposal-ticket-side-space" style="width:64px;min-width:64px;font-size:0;line-height:0;"></td>
+                    <td width="280" valign="top" class="proposal-ticket-body" style="width:280px;max-width:280px;vertical-align:top;">
+                      <p class="proposal-ticket-label">Ticket de proposta</p>
+                      <p class="proposal-ticket-title">Kraftchat</p>
+                      <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-table">
             ${renderTicketRow("Nome", data.name)}
             ${renderTicketRow("E-mail", data.email)}
             ${renderTicketRow("WhatsApp", data.whatsapp)}
             ${renderTicketRow("Ideia de projeto", data.projectProposal)}
             ${renderTicketRow("Dúvidas", data.questions)}
+                      </table>
+                    </td>
+                    <td width="64" class="proposal-ticket-side-space" style="width:64px;min-width:64px;font-size:0;line-height:0;"></td>
+                  </tr>
+                  <tr>
+                    <td class="proposal-ticket-spacer-bottom" colspan="3"></td>
+                  </tr>
                 </table>
               </td>
             </tr>
@@ -94,8 +118,8 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
     name: escapeHtml(data.name),
     email: escapeHtml(data.email),
     whatsapp: escapeHtml(data.whatsapp),
-    projectProposal: escapeHtml(data.projectProposal),
-    questions: escapeHtml(data.questions || "não informado"),
+    projectProposal: escapeHtml(limitEmailText(data.projectProposal, 130)),
+    questions: escapeHtml(limitEmailText(data.questions || "não informado", 110)),
     firstName: escapeHtml(firstName),
   };
 
