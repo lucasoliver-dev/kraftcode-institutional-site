@@ -13,10 +13,11 @@ const instrumentSans = Instrument_Sans({
 });
 
 const socialImage = {
-  url: `${siteConfig.url}/og/kraftcode-og-v2.png`,
+  url: `${siteConfig.url}/og/kraftcode-og-v3.jpg`,
   width: 1200,
   height: 630,
   alt: "Kraftcode - Software, IA e produtos digitais escaláveis",
+  type: "image/jpeg",
 };
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    images: [socialImage.url],
+    images: [socialImage],
     locale: "pt_BR",
     type: "website",
   },
