@@ -26,6 +26,51 @@ function getLogoUrl() {
   return `${siteConfig.url}/images/logos/email-brand-light.png`;
 }
 
+function getTicketImageUrl() {
+  return `${siteConfig.url}/images/email/proposal-ticket.png`;
+}
+
+type SafeContactProjectData = {
+  name: string;
+  email: string;
+  whatsapp: string;
+  projectProposal: string;
+  questions: string;
+  firstName: string;
+};
+
+function renderTicketRow(label: string, value: string) {
+  return `
+    <tr>
+      <td style="padding: 12px 0; border-top: 1px solid #eceff4;">
+        <p style="margin: 0 0 4px; font-size: 11px; line-height: 1.4; color: #6b7280; font-weight: 700; text-transform: uppercase;">${label}</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #090a0f;">${value}</p>
+      </td>
+    </tr>
+  `;
+}
+
+function renderProposalTicket(data: SafeContactProjectData) {
+  const ticketImageUrl = getTicketImageUrl();
+
+  return `
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; margin: 30px 0; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 0; font-family: Arial, sans-serif;">
+          <img src="${ticketImageUrl}" width="560" alt="Ticket de proposta Kraftchat" style="display: block; width: 100%; max-width: 560px; height: auto; border: 0; margin: 0 auto 16px;" />
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; background: #ffffff; color: #090a0f;">
+            ${renderTicketRow("Nome", data.name)}
+            ${renderTicketRow("E-mail", data.email)}
+            ${renderTicketRow("WhatsApp", data.whatsapp)}
+            ${renderTicketRow("Ideia de projeto", data.projectProposal)}
+            ${renderTicketRow("Dúvidas", data.questions)}
+          </table>
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
 export async function sendContactProposalConfirmationEmail(data: ContactProjectFormData) {
   const resend = createResendClient();
   const firstName = getFirstName(data.name);
@@ -82,14 +127,7 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
                     <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.7; color: #374151;">Sua proposta de projeto foi registrada com a equipe Kraftcode.</p>
                     <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #374151;">Nos próximos passos, vamos avaliar as informações enviadas, entender o melhor caminho para o seu projeto e retornar o mais breve possível pelo contato informado.</p>
 
-                    <div style="margin: 28px 0; padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px; background: #f9fafb;">
-                      <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: #101318;"><strong>Resumo recebido</strong></p>
-                      <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: #374151;"><strong>Nome:</strong> ${safe.name}</p>
-                      <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: #374151;"><strong>E-mail:</strong> ${safe.email}</p>
-                      <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: #374151;"><strong>WhatsApp:</strong> ${safe.whatsapp}</p>
-                      <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: #374151;"><strong>Ideia de projeto:</strong> ${safe.projectProposal}</p>
-                      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #374151;"><strong>Dúvidas:</strong> ${safe.questions}</p>
-                    </div>
+                    ${renderProposalTicket(safe)}
 
                     <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse;">
                       <tr>
