@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
 import { Badge, Button, Container, Flex, Section, Typography, classNames } from "../../../lib/ui";
 import { homeContent } from "../../../content/home";
 import { saasShowcaseItems } from "../../../content/products";
@@ -30,7 +29,6 @@ export function SaaSShowcaseCarousel({
   cta = homeContent.saasShowcase.cta,
   banners = saasShowcaseItems,
 }: SaaSShowcaseCarouselProps) {
-  const [isPaused, setIsPaused] = useState(false);
   const loopItems = [...banners, ...banners];
   const getBadgeAccent = (accent: ShowcaseAccent) => {
     if (accent === "kraftchat" || accent === "kraftscore") {
@@ -62,21 +60,14 @@ export function SaaSShowcaseCarousel({
             />
           </div>
 
-          <div
-            className={styles.viewport}
-            onPointerCancel={() => setIsPaused(false)}
-            onPointerDown={() => setIsPaused(true)}
-            onPointerLeave={() => setIsPaused(false)}
-            onPointerUp={() => setIsPaused(false)}
-          >
-            <div className={classNames(styles.track, isPaused && styles.paused)}>
+          <div className={styles.viewport}>
+            <div className={styles.track}>
               {loopItems.map((banner, index) => (
                 <article
                   aria-hidden={index >= banners.length}
                   className={classNames(styles.banner, styles[banner.accent])}
                   data-loop-copy={index >= banners.length}
                   key={`${banner.title}-${index}`}
-                  tabIndex={index >= banners.length ? -1 : 0}
                 >
                   <div className={styles.media}>
                     <img

@@ -41,14 +41,10 @@
   animation: scroll 42s linear infinite;
 }
 
-.viewport:hover .track,
-.viewport:focus-within .track,
-.viewport:active .track {
-  animation-play-state: paused;
-}
-
-.paused {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .viewport:hover .track {
+    animation-play-state: paused;
+  }
 }
 
 .banner {
@@ -155,12 +151,6 @@
 
   .content {
     padding: 16px 8px 8px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
   }
 }
 
