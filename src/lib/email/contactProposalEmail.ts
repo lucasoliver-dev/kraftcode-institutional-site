@@ -1,9 +1,12 @@
 import "server-only";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { ContactProjectFormData } from "../../components/contact/ContactProjectModal/contactProjectSchema";
 import { siteConfig } from "../../config/site.config";
 import { createResendClient } from "./resend";
 
 const defaultFromEmail = "Kraftcode <onboarding@resend.dev>";
+const emailCss = readFileSync(join(process.cwd(), "src/lib/email/contactProposalEmail.css"), "utf8");
 
 function escapeHtml(value: string) {
   return value
@@ -30,6 +33,10 @@ function getTicketImageUrl() {
   return `${siteConfig.url}/images/email/proposal-ticket.png`;
 }
 
+function getEmailCss(ticketImageUrl: string) {
+  return emailCss.replaceAll("__TICKET_IMAGE_URL__", ticketImageUrl);
+}
+
 type SafeContactProjectData = {
   name: string;
   email: string;
@@ -42,9 +49,9 @@ type SafeContactProjectData = {
 function renderTicketRow(label: string, value: string) {
   return `
     <tr>
-      <td style="padding: 12px 0; border-top: 1px solid #eceff4;">
-        <p style="margin: 0 0 4px; font-size: 11px; line-height: 1.4; color: #6b7280; font-weight: 700; text-transform: uppercase;">${label}</p>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #090a0f;">${value}</p>
+      <td class="proposal-ticket-row">
+        <p class="proposal-ticket-row-label">${label}</p>
+        <p class="proposal-ticket-row-value">${value}</p>
       </td>
     </tr>
   `;
@@ -54,16 +61,23 @@ function renderProposalTicket(data: SafeContactProjectData) {
   const ticketImageUrl = getTicketImageUrl();
 
   return `
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; margin: 30px 0; border-collapse: collapse;">
+    <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-wrap">
       <tr>
-        <td style="padding: 0; font-family: Arial, sans-serif;">
-          <img src="${ticketImageUrl}" width="560" alt="Ticket de proposta Kraftchat" style="display: block; width: 100%; max-width: 560px; height: auto; border: 0; margin: 0 auto 16px;" />
-          <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; background: #ffffff; color: #090a0f;">
+        <td class="proposal-ticket-background">
+          <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket">
+            <tr>
+              <td background="${ticketImageUrl}" class="proposal-ticket-content">
+                <p class="proposal-ticket-label">Ticket de proposta</p>
+                <p class="proposal-ticket-title">Kraftchat</p>
+                <table role="presentation" cellpadding="0" cellspacing="0" class="proposal-ticket-table">
             ${renderTicketRow("Nome", data.name)}
             ${renderTicketRow("E-mail", data.email)}
             ${renderTicketRow("WhatsApp", data.whatsapp)}
             ${renderTicketRow("Ideia de projeto", data.projectProposal)}
             ${renderTicketRow("Dúvidas", data.questions)}
+                </table>
+              </td>
+            </tr>
           </table>
         </td>
       </tr>
@@ -75,6 +89,7 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
   const resend = createResendClient();
   const firstName = getFirstName(data.name);
   const logoUrl = getLogoUrl();
+  const ticketImageUrl = getTicketImageUrl();
   const safe = {
     name: escapeHtml(data.name),
     email: escapeHtml(data.email),
@@ -107,35 +122,36 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
       siteConfig.url,
     ].join("\n"),
     html: `
-      <div style="margin: 0; padding: 0; background: #f3f5f8;">
-        <div style="display: none; max-height: 0; overflow: hidden; opacity: 0;">
+      <style>${getEmailCss(ticketImageUrl)}</style>
+      <div class="email-root">
+        <div class="email-preheader">
           Recebemos sua proposta de projeto e vamos retornar o mais breve possível.
         </div>
-        <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; background: #f3f5f8;">
+        <table role="presentation" cellpadding="0" cellspacing="0" class="email-page">
           <tr>
-            <td style="padding: 32px 16px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 640px; margin: 0 auto; border-collapse: collapse; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12);">
+            <td class="email-shell-cell">
+              <table role="presentation" cellpadding="0" cellspacing="0" class="email-card">
                 <tr>
-                  <td style="padding: 28px 32px; background: #070a12;">
-                    <img src="${logoUrl}" width="168" alt="Kraftcode" style="display: block; width: 168px; max-width: 60%; height: auto; border: 0;" />
+                  <td class="email-header">
+                    <img src="${logoUrl}" width="168" alt="Kraftcode" class="email-logo" />
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding: 32px; font-family: Arial, sans-serif; color: #101318;">
-                    <p style="margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: #5b5ff7; font-weight: 700; text-transform: uppercase;">Proposta recebida</p>
-                    <h1 style="margin: 0 0 16px; font-size: 28px; line-height: 1.15; color: #101318;">Olá, ${safe.firstName}. Já recebemos sua ideia.</h1>
-                    <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.7; color: #374151;">Sua proposta de projeto foi registrada com a equipe Kraftcode.</p>
-                    <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #374151;">Nos próximos passos, vamos avaliar as informações enviadas, entender o melhor caminho para o seu projeto e retornar o mais breve possível pelo contato informado.</p>
+                  <td class="email-content">
+                    <p class="email-eyebrow">Proposta recebida</p>
+                    <h1 class="email-title">Olá, ${safe.firstName}. Já recebemos sua ideia.</h1>
+                    <p class="email-copy">Sua proposta de projeto foi registrada com a equipe Kraftcode.</p>
+                    <p class="email-copy email-copy-last">Nos próximos passos, vamos avaliar as informações enviadas, entender o melhor caminho para o seu projeto e retornar o mais breve possível pelo contato informado.</p>
 
                     ${renderProposalTicket(safe)}
 
-                    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" class="email-signature">
                       <tr>
-                        <td style="padding-top: 4px; font-family: Arial, sans-serif;">
-                          <p style="margin: 0 0 8px; font-size: 15px; line-height: 1.6; color: #101318;"><strong>Equipe Kraftcode</strong></p>
-                          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4b5563;">Software, IA e produtos digitais escaláveis.</p>
-                          <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.6;">
-                            <a href="${siteConfig.url}" style="color: #3948f8; text-decoration: none;">${siteConfig.url.replace("https://", "")}</a>
+                        <td class="email-signature-cell">
+                          <p class="email-signature-name"><strong>Equipe Kraftcode</strong></p>
+                          <p class="email-signature-copy">Software, IA e produtos digitais escaláveis.</p>
+                          <p class="email-signature-link-row">
+                            <a href="${siteConfig.url}" class="email-signature-link">${siteConfig.url.replace("https://", "")}</a>
                           </p>
                         </td>
                       </tr>
@@ -143,8 +159,8 @@ export async function sendContactProposalConfirmationEmail(data: ContactProjectF
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding: 18px 32px; background: #f9fafb; border-top: 1px solid #e5e7eb; font-family: Arial, sans-serif;">
-                    <p style="margin: 0; font-size: 12px; line-height: 1.6; color: #6b7280;">Este e-mail confirma o recebimento da sua proposta enviada pelo site da Kraftcode.</p>
+                  <td class="email-footer">
+                    <p class="email-footer-copy">Este e-mail confirma o recebimento da sua proposta enviada pelo site da Kraftcode.</p>
                   </td>
                 </tr>
               </table>

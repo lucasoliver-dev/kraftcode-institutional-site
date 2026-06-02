@@ -1,0 +1,200 @@
+.email-root {
+  margin: 0;
+  padding: 0;
+  background: #f3f5f8;
+}
+
+.email-preheader {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.email-page {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f3f5f8;
+}
+
+.email-shell-cell {
+  padding: 32px 16px;
+}
+
+.email-card {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+}
+
+.email-header {
+  padding: 28px 32px;
+  background: #070a12;
+}
+
+.email-logo {
+  display: block;
+  width: 168px;
+  max-width: 60%;
+  height: auto;
+  border: 0;
+}
+
+.email-content {
+  padding: 32px;
+  font-family: Arial, sans-serif;
+  color: #101318;
+}
+
+.email-eyebrow {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5b5ff7;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.email-title {
+  margin: 0 0 16px;
+  font-size: 28px;
+  line-height: 1.15;
+  color: #101318;
+}
+
+.email-copy {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.email-copy-last {
+  margin: 0;
+}
+
+.proposal-ticket-wrap {
+  width: 100%;
+  margin: 30px 0;
+  border-collapse: collapse;
+}
+
+.proposal-ticket-background {
+  padding: 26px 16px;
+  background: #070a12;
+}
+
+.proposal-ticket {
+  width: 100%;
+  max-width: 408px;
+  min-height: 612px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: url("__TICKET_IMAGE_URL__") center / 100% 100% no-repeat;
+  color: #090a0f;
+}
+
+.proposal-ticket-content {
+  padding: 54px 42px 52px;
+  font-family: Arial, sans-serif;
+  color: #090a0f;
+}
+
+.proposal-ticket-label {
+  margin: 0 0 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6b7280;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.proposal-ticket-title {
+  margin: 0 0 24px;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #090a0f;
+  font-weight: 800;
+}
+
+.proposal-ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #090a0f;
+}
+
+.proposal-ticket-row {
+  padding: 12px 0;
+  border-top: 1px solid #eceff4;
+}
+
+.proposal-ticket-row-label {
+  margin: 0 0 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #6b7280;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.proposal-ticket-row-value {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #090a0f;
+}
+
+.email-signature {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.email-signature-cell {
+  padding-top: 4px;
+  font-family: Arial, sans-serif;
+}
+
+.email-signature-name {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #101318;
+}
+
+.email-signature-copy {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.email-signature-link-row {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.email-signature-link {
+  color: #3948f8;
+  text-decoration: none;
+}
+
+.email-footer {
+  padding: 18px 32px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  font-family: Arial, sans-serif;
+}
+
+.email-footer-copy {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #6b7280;
+}
