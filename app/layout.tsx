@@ -1,3 +1,5 @@
+import { SmoothScrollProvider } from '../src/components/providers/SmoothScrollProvider'
+import 'lenis/dist/lenis.css'
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import { AppShell } from "../src/components/layout/AppShell";
@@ -34,7 +36,9 @@ export default function RootLayout({
   return (
     <html className={instrumentSans.variable} lang="pt-BR">
       <body>
-        <AppShell>{children}</AppShell>
+        <SmoothScrollProvider>
+          <AppShell>{children}</AppShell>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

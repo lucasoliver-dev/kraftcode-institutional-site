@@ -1,0 +1,135 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding-block: clamp(3rem, 5vw, 4.75rem);
+  background:
+    radial-gradient(ellipse at 60% 18%, var(--color-section-blue-glow), transparent 48%),
+    linear-gradient(180deg, var(--color-section-blue-soft) 0%, var(--color-section-blue) 100%);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(16rem, 0.75fr) minmax(20rem, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.content {
+  max-width: 28rem;
+}
+
+.summary {
+  max-width: 26rem;
+}
+
+.title {
+  --typography-size: clamp(1.75rem, 2.35vw, 2.7rem);
+  --typography-line-height: 1.06;
+}
+
+.titleLine {
+  display: block;
+}
+
+.text {
+  --typography-line-height: 1.6;
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 2rem);
+  align-items: center;
+}
+
+.logo {
+  display: grid;
+  gap: 0.5rem;
+  place-items: center;
+  min-width: 0;
+}
+
+.logoIcon {
+  width: clamp(2rem, 3vw, 3rem);
+  height: clamp(2rem, 3vw, 3rem);
+  color: var(--color-text-muted);
+  opacity: 0.72;
+}
+
+@media (max-width: 64rem) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    justify-items: start;
+  }
+}
+
+@media (max-width: 42.5rem) {
+  .logoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: var(--section-fade-size);
+  pointer-events: none;
+}
+
+.section::before {
+  top: 0;
+  background: linear-gradient(180deg, var(--color-bg) 0%, rgba(8, 9, 12, 0.76) 32%, transparent 100%);
+}
+
+.section::after {
+  bottom: 0;
+  background: linear-gradient(0deg, var(--color-bg) 0%, rgba(8, 9, 12, 0.72) 30%, transparent 100%);
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* mobile-polish-enterprise */
+@media (max-width: 768px) {
+  .section {
+    padding-block: 48px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .title {
+    max-width: 21rem;
+    --typography-size: clamp(1.8rem, 8.5vw, 2.35rem);
+    --typography-line-height: 1.05;
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .logoIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .logoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

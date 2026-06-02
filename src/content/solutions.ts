@@ -1,22 +1,22 @@
 export const solutions = [
   {
     title: "Software sob medida",
-    description: "Produtos digitais criados para operação real.",
+    description: "Soluções robustas, escaláveis e alinhadas ao seu negócio.",
   },
   {
     title: "IA aplicada",
-    description: "Automação, agentes e fluxos inteligentes.",
+    description: "Inteligência artificial para automação, atendimento e decisão.",
   },
   {
     title: "SaaS products",
-    description: "Estratégia, arquitetura e evolução de plataformas.",
+    description: "Produtos próprios com IA, dados e experiência real de mercado.",
   },
   {
     title: "Arquitetura frontend",
-    description: "Interfaces performáticas, escaláveis e consistentes.",
+    description: "Interfaces modernas, rápidas e centradas no usuário.",
   },
   {
     title: "Integrações e automações",
-    description: "Sistemas conectados com menos atrito operacional.",
+    description: "Conectamos sistemas e processos de ponta a ponta.",
   },
 ] as const;

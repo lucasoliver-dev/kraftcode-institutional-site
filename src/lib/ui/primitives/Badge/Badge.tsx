@@ -15,10 +15,10 @@ export function Badge({ children, accent = "neutral", className }: BadgeProps) {
       <Typography
         as="span"
         className={styles.text}
-        size="xs"
+        size="sm"
         transform="none"
         variant="label"
-        weight="bold"
+        weight="medium"
       >
         {children}
       </Typography>

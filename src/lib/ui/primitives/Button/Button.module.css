@@ -1,14 +1,17 @@
 .root {
   display: inline-flex;
+  width: fit-content;
   min-height: var(--button-height);
   align-items: center;
   justify-content: center;
-  border: 1px solid transparent;
+  gap: 0.625rem;
+  border: 0.0625rem solid transparent;
   border-radius: var(--radius-sm);
   padding-inline: var(--button-padding);
   color: var(--button-color);
   background: var(--button-bg);
   cursor: pointer;
+  text-decoration: none;
   transition:
     transform var(--transition-fast),
     background var(--transition-fast),
@@ -17,13 +20,13 @@
 }
 
 .root:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 30px var(--button-shadow);
+  transform: translateY(-0.0625rem);
+  box-shadow: 0 0.75rem 1.875rem var(--button-shadow);
 }
 
 .root:focus-visible {
-  outline: 2px solid var(--button-focus);
-  outline-offset: 3px;
+  outline: 0.125rem solid var(--button-focus);
+  outline-offset: 0.1875rem;
 }
 
 .root:disabled {
@@ -34,46 +37,46 @@
 }
 
 .sm {
-  --button-height: 36px;
-  --button-padding: 14px;
+  --button-height: 2.25rem;
+  --button-padding: 0.875rem;
 }
 
 .md {
-  --button-height: 44px;
-  --button-padding: 18px;
+  --button-height: 2.75rem;
+  --button-padding: 1.125rem;
 }
 
 .lg {
-  --button-height: 52px;
-  --button-padding: 24px;
+  --button-height: 3.25rem;
+  --button-padding: 1.5rem;
 }
 
 .fullWidth {
   width: 100%;
 }
 
-.primary.neutral {
+.filled.neutral {
   --button-bg: #f6f7f9;
   --button-color: #090a0d;
   --button-focus: #ffffff;
   --button-shadow: rgba(255, 255, 255, 0.14);
 }
 
-.primary.kraftchat {
+.filled.kraftchat {
   --button-bg: var(--kraftchat-accent);
   --button-color: #ffffff;
   --button-focus: var(--kraftchat-accent);
   --button-shadow: rgba(255, 59, 79, 0.25);
 }
 
-.primary.kraftscore {
+.filled.kraftscore {
   --button-bg: var(--kraftscore-accent);
   --button-color: #06130d;
   --button-focus: var(--kraftscore-accent);
   --button-shadow: rgba(57, 245, 166, 0.22);
 }
 
-.secondary {
+.outline {
   --button-bg: rgba(255, 255, 255, 0.08);
   --button-color: var(--color-text-primary);
   --button-focus: rgba(255, 255, 255, 0.65);
@@ -89,10 +92,23 @@
 }
 
 .ghost:hover,
-.secondary:hover {
+.outline:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
 .label {
   --typography-color: var(--button-color);
+}
+
+.icon {
+  display: inline-grid;
+  width: 1rem;
+  height: 1rem;
+  place-items: center;
+  color: currentColor;
+}
+
+.icon :where(svg) {
+  width: 100%;
+  height: 100%;
 }

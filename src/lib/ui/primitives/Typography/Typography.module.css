@@ -86,11 +86,11 @@
 }
 
 .semibold {
-  --typography-weight: 650;
+  --typography-weight: 600;
 }
 
 .bold {
-  --typography-weight: 800;
+  --typography-weight: 700;
 }
 
 .primary {
@@ -151,4 +151,42 @@
 
 .capitalize {
   --typography-transform: capitalize;
+}
+
+/* mobile-fluid-typography-scale */
+@media (max-width: 47.499rem) {
+  .size5xl {
+    --typography-size: clamp(2.15rem, 10vw, 2.85rem);
+  }
+
+  .size4xl {
+    --typography-size: clamp(1.95rem, 8.5vw, 2.55rem);
+  }
+
+  .size3xl {
+    --typography-size: clamp(1.65rem, 7vw, 2.15rem);
+  }
+
+  .size2xl {
+    --typography-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  .sizeXl {
+    --typography-size: clamp(1.2rem, 4.6vw, 1.45rem);
+  }
+
+  .variantDisplay {
+    --typography-line-height: 1;
+    --typography-letter-spacing: -0.045em;
+  }
+
+  .variantHeading {
+    --typography-line-height: 1.08;
+    --typography-letter-spacing: -0.035em;
+  }
+
+  .variantSubtitle,
+  .variantParagraph {
+    --typography-line-height: 1.55;
+  }
 }

@@ -2,14 +2,56 @@ import { routes } from "../config/routes";
 
 export const homeContent = {
   hero: {
-    badge: "Kraftcode Studio",
-    title: "Software, IA e produtos digitais escaláveis.",
+    badge: "Software · IA · Produtos digitais",
+    title: "Construímos tecnologia que gera impacto real.",
     subtitle:
-      "Criamos plataformas, automações e produtos SaaS com design preciso, engenharia sólida e foco em escala.",
+      "Da estratégia à execução, criamos soluções digitais escaláveis, inteligentes e centradas em resultado.",
     ctas: [
       { label: "Conhecer soluções", href: routes.solutions, variant: "primary" },
       { label: "Ver produtos", href: routes.products, variant: "secondary" },
     ],
+  },
+  highlights: [
+    {
+      title: "Foco em resultados",
+      description: "Tecnologia com propósito.",
+    },
+    {
+      title: "Equipes especializadas",
+      description: "Engenharia de alto nível.",
+    },
+    {
+      title: "Produtos escaláveis",
+      description: "SaaS com IA embarcada.",
+    },
+    {
+      title: "Parceiro estratégico",
+      description: "Do MVP à escala global.",
+    },
+  ],
+  solutions: {
+    label: "Soluções",
+    title: "Tecnologia para resolver problemas complexos.",
+    text: "Atuamos em diferentes frentes para acelerar negócios e criar vantagens competitivas.",
+  },
+  saasShowcase: {
+    label: "Nossos produtos",
+    title: "SaaS próprios. Focados em IA.",
+    cta: { label: "Ver todos os produtos", href: routes.products },
+  },
+  enterprise: {
+    label: "Enterprise",
+    title: "Projetos que exigem experiência real.",
+    text: "Participamos do desenvolvimento de soluções enterprise em operações de grande escala.",
+    cta: { label: "Ver projetos enterprise", href: routes.enterprise },
+    segments: ["Enterprise", "Retail", "Fintech", "Sports", "Data"],
+  },
+  founder: {
+    label: "Fundador",
+    title: "Liderança técnica. Visão de produto.",
+    text: "Lucas Oliveira, engenheiro de software e IA, atua na criação de produtos digitais com foco em arquitetura, experiência e impacto real.",
+    cta: { label: "Conhecer minha história", href: routes.founder },
+    socials: ["LinkedIn", "GitHub", "Instagram"],
   },
   cards: [
     {
@@ -34,15 +76,10 @@ export const homeContent = {
       href: routes.enterprise,
     },
   ],
-  authority: {
-    label: "Engineering partner",
-    title: "Produto, engenharia e IA no mesmo ritmo.",
-    text: "A Kraftcode combina estratégia técnica, execução enxuta e visão de produto para criar software pronto para crescer.",
-  },
   finalCta: {
-    title: "Vamos desenhar o próximo sistema?",
-    text: "Uma conversa curta já revela o caminho técnico certo.",
-    label: "Falar com a Kraftcode",
+    title: "Vamos construir algo incrível juntos?",
+    text: "Conte sua ideia ou desafio. Vamos conversar.",
+    label: "Falar com a gente",
     href: routes.contact,
   },
 } as const;

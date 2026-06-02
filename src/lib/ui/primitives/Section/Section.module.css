@@ -9,8 +9,8 @@
 
 .muted {
   background:
-    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.08), transparent 28%),
-    var(--color-bg-soft);
+    radial-gradient(ellipse at 70% 18%, var(--color-section-blue-glow), transparent 44%),
+    linear-gradient(180deg, var(--color-section-blue-soft) 0%, var(--color-section-blue) 100%);
 }
 
 .kraftchat {
@@ -30,13 +30,13 @@
 }
 
 .md {
-  padding-block: 72px;
+  padding-block: 64px;
 }
 
 .lg {
-  padding-block: 96px;
+  padding-block: 84px;
 }
 
 .xl {
-  padding-block: 128px;
+  padding-block: 112px;
 }

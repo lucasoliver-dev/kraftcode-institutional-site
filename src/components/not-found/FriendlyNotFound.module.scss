@@ -1,0 +1,133 @@
+.page {
+  min-block-size: 100svh;
+  display: grid;
+  place-items: center;
+  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-inline: clamp(1rem, 4vw, 4rem);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(91, 95, 239, 0.16), transparent 28rem),
+    radial-gradient(circle at 90% 10%, rgba(255, 211, 78, 0.14), transparent 24rem),
+    #080b14;
+}
+
+.content {
+  inline-size: min(100%, 72rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.textBlock {
+  min-inline-size: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-block-end: 1rem;
+  color: #8f97ff;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-inline-size: 12ch;
+  margin: 0;
+  color: #f6f7fb;
+  font-size: clamp(2.25rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+.description {
+  max-inline-size: 42rem;
+  margin-block: clamp(1.25rem, 3vw, 2rem) 0;
+  color: rgba(246, 247, 251, 0.72);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-block-start: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 3rem;
+  padding-inline: 1.25rem;
+  border-radius: 999rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primaryButton {
+  color: #ffffff;
+  background: linear-gradient(135deg, #5b5fef, #8f97ff);
+  box-shadow: 0 1rem 2.5rem rgba(91, 95, 239, 0.3);
+}
+
+.secondaryButton {
+  color: #f6f7fb;
+  border: 0.0625rem solid rgba(246, 247, 251, 0.18);
+  background: rgba(246, 247, 251, 0.06);
+}
+
+.imageWrapper {
+  min-inline-size: 0;
+  border-radius: clamp(1.5rem, 4vw, 3rem);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+@media (max-width: 52rem) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .imageWrapper {
+    order: -1;
+  }
+
+  .title {
+    max-inline-size: 14ch;
+    font-size: clamp(2.25rem, 13vw, 4rem);
+  }
+
+  .actions {
+    inline-size: 100%;
+  }
+
+  .button {
+    flex: 1 1 12rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .page {
+    padding-inline: 1rem;
+  }
+
+  .title {
+    max-inline-size: 100%;
+  }
+
+  .button {
+    inline-size: 100%;
+  }
+}

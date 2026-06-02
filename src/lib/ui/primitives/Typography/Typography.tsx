@@ -63,6 +63,8 @@ type TypographyProps<T extends TypographyElement = "p"> = {
   className?: string;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
 
+export type { TypographyProps };
+
 const defaultElementByVariant: Record<TypographyVariant, TypographyElement> = {
   display: "h1",
   heading: "h2",
@@ -74,7 +76,7 @@ const defaultElementByVariant: Record<TypographyVariant, TypographyElement> = {
 };
 
 const defaultSizeByVariant: Record<TypographyVariant, TypographySize> = {
-  display: "5xl",
+  display: "4xl",
   heading: "3xl",
   subtitle: "xl",
   paragraph: "md",
@@ -127,4 +129,32 @@ export function Typography<T extends TypographyElement = "p">({
       {children}
     </Component>
   );
+}
+
+export function Display(props: TypographyProps<"h1">) {
+  return <Typography as="h1" variant="display" size="3xl" weight="semibold" {...props} />;
+}
+
+export function Heading(props: TypographyProps<"h2">) {
+  return <Typography as="h2" variant="heading" size="3xl" weight="semibold" {...props} />;
+}
+
+export function Subtitle(props: TypographyProps<"p">) {
+  return <Typography as="p" variant="subtitle" size="lg" tone="secondary" {...props} />;
+}
+
+export function Paragraph(props: TypographyProps<"p">) {
+  return <Typography as="p" variant="paragraph" size="md" {...props} />;
+}
+
+export function Label(props: TypographyProps<"span">) {
+  return <Typography as="span" variant="label" size="sm" weight="medium" {...props} />;
+}
+
+export function Caption(props: TypographyProps<"small">) {
+  return <Typography as="small" variant="caption" size="sm" tone="muted" {...props} />;
+}
+
+export function Overline(props: TypographyProps<"span">) {
+  return <Typography as="span" variant="overline" size="xs" tone="muted" {...props} />;
 }

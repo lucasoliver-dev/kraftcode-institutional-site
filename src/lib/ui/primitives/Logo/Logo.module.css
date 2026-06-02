@@ -12,6 +12,7 @@
 
 .text {
   display: inline-flex;
+  white-space: nowrap;
 }
 
 .sm .mark {
