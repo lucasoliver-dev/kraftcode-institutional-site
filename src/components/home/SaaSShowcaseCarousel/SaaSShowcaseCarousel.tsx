@@ -72,9 +72,11 @@ export function SaaSShowcaseCarousel({
             <div className={classNames(styles.track, isPaused && styles.paused)}>
               {loopItems.map((banner, index) => (
                 <article
+                  aria-hidden={index >= banners.length}
                   className={classNames(styles.banner, styles[banner.accent])}
+                  data-loop-copy={index >= banners.length}
                   key={`${banner.title}-${index}`}
-                  tabIndex={0}
+                  tabIndex={index >= banners.length ? -1 : 0}
                 >
                   <div className={styles.media}>
                     <img
