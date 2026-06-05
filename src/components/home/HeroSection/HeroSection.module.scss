@@ -1,12 +1,13 @@
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(3rem, 7vw, 8rem);
+  grid-template-columns: minmax(0, 0.95fr) minmax(16rem, 22rem);
+  column-gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  row-gap: clamp(2.25rem, 6vw, 4rem);
   align-items: center;
 }
 
 .content {
-  max-width: 45rem;
+  max-inline-size: min(100%, 45rem);
   justify-self: start;
 }
 
@@ -15,17 +16,8 @@
 }
 
 .title {
-  max-width: none;
-  --typography-size: clamp(2.65rem, 3.55vw, 4.05rem);
-  --typography-line-height: 1.03;
+  text-wrap: balance;
   --typography-weight: 500;
-}
-
-.titleLine {
-  display: block;
-  width: max-content;
-  max-width: 100%;
-  white-space: nowrap;
 }
 
 .titleMuted {
@@ -33,158 +25,52 @@
 }
 
 .subtitle {
-  max-width: 33.75rem;
-  --typography-size: 1.0625rem;
-  --typography-line-height: 1.6;
+  max-inline-size: min(100%, 33.75rem);
 }
 
 .actions {
-  margin-top: 2.125rem;
+  margin-block-start: 2.125rem;
 }
 
 @media (max-width: 70rem) {
   .layout {
     grid-template-columns: 1fr;
+    gap: clamp(2.25rem, 8vw, 4rem);
   }
 }
 
-@media (max-width: 40rem) {
-  .title {
-    --typography-size: clamp(1.85rem, 8.6vw, 3.15rem);
-  }
-
-  .actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-}
-
-/* mobile-polish-hero */
-@media (max-width: 768px) {
-  .section {
-    padding-block: 72px 42px;
-  }
-
+@media (max-width: 47.499rem) {
   .layout {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    gap: clamp(2rem, 8vw, 3rem);
   }
 
   .content {
-    max-width: 100%;
+    max-inline-size: 100%;
   }
 
-  .eyebrow,
-  .kicker {
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
+  .eyebrow {
+    --typography-size: clamp(0.68rem, 2.4vw, 0.78rem);
+    --typography-letter-spacing: 0.06em;
   }
 
   .title {
-    max-width: 21rem;
-    --typography-size: clamp(2.15rem, 11vw, 2.9rem);
-    --typography-line-height: 0.98;
-    --typography-letter-spacing: -0.055em;
+    max-inline-size: min(100%, 11.5ch);
   }
 
-  .text,
   .subtitle {
-    max-width: 21rem;
-    --typography-size: 0.94rem;
-    --typography-line-height: 1.55;
+    max-inline-size: min(100%, 32ch);
   }
 
   .actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .visual {
-    max-width: 100%;
-    margin-top: 10px;
-    opacity: 0.82;
-    transform: scale(0.92);
-    transform-origin: center top;
-  }
-}
-
-@media (max-width: 420px) {
-  .section {
-    padding-block: 64px 36px;
-  }
-
-  .title {
-    max-width: 19.5rem;
-    --typography-size: clamp(2rem, 10.5vw, 2.55rem);
-  }
-
-  .visual {
-    opacity: 0.68;
-    transform: scale(0.86);
-  }
-}
-
-/* mobile-hero-layout-polish */
-@media (max-width: 768px) {
-  .section {
-    padding-block-start: 5rem;
-    padding-block-end: 3.5rem;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
-  }
-
-  .content {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .title {
-    max-width: min(100%, 22rem);
-    overflow-wrap: normal;
-    text-wrap: balance;
-    --typography-size: clamp(2.45rem, 10.8vw, 3.35rem);
-    --typography-line-height: 0.98;
-  }
-
-  .text,
-  .subtitle {
-    max-width: min(100%, 21rem);
-    --typography-size: 1rem;
-    --typography-line-height: 1.55;
-  }
-
-  .actions {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+    margin-block-start: 1.75rem;
   }
 
   .actions :where(a, button) {
-    width: auto;
-    min-width: 10rem;
-  }
-
-  .visual {
-    width: 100%;
-    max-width: 22rem;
-    margin-inline: auto;
-    opacity: 0.78;
-  }
-}
-
-@media (max-width: 420px) {
-  .title {
-    max-width: 20rem;
-    --typography-size: clamp(2.15rem, 10.4vw, 2.85rem);
-  }
-
-  .text,
-  .subtitle {
-    max-width: 20rem;
+    max-inline-size: 100%;
+    white-space: nowrap;
   }
 }

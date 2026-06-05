@@ -3,7 +3,7 @@ import { Button, Container, Display, Flex, Overline, Paragraph, Section } from "
 import { homeContent } from "../../../content/home";
 import { HomeHighlights } from "../HomeHighlights";
 import { HeroVisual } from "../HeroVisual";
-import styles from "./HeroSection.module.css";
+import styles from "./HeroSection.module.scss";
 
 export function HeroSection() {
   return (
