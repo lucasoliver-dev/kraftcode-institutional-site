@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { routes } from "../../../config/routes";
 import { siteConfig } from "../../../config/site.config";
 import { mainNavigation } from "../../../content/navigation";
 import { Container, Flex, Logo, Typography } from "../../../lib/ui";
@@ -29,26 +28,6 @@ export function AppFooter() {
                   </Typography>
                 </Link>
               ))}
-            </div>
-          </div>
-
-          <div className={styles.group}>
-            <Typography as="h2" size="sm" variant="label" weight="bold">
-              Produtos
-            </Typography>
-            <div className={styles.links}>
-              {siteConfig.products.map((product) => (
-                <Link className={styles.link} href={product.href} key={product.href}>
-                  <Typography as="span" size="sm" tone="secondary">
-                    {product.name}
-                  </Typography>
-                </Link>
-              ))}
-              <Link className={styles.link} href={routes.enterprise}>
-                <Typography as="span" size="sm" tone="secondary">
-                  Enterprise Software
-                </Typography>
-              </Link>
             </div>
           </div>
         </div>

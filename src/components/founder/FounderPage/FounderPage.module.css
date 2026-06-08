@@ -1,0 +1,289 @@
+.heroSection {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(22rem, 0.74fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.heroContent {
+  display: grid;
+  gap: 1.45rem;
+  max-inline-size: min(100%, 44rem);
+}
+
+.title {
+  text-wrap: balance;
+  --typography-weight: 500;
+}
+
+.identity {
+  display: grid;
+  gap: 0.75rem;
+  max-inline-size: 37rem;
+}
+
+.name {
+  --typography-line-height: 1.08;
+}
+
+.role {
+  --typography-line-height: 1.62;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.social {
+  display: inline-flex;
+  width: 2.35rem;
+  height: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.social:hover,
+.social:focus-visible {
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+  transform: translateY(-0.0625rem);
+}
+
+.social :where(svg) {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.portrait {
+  position: relative;
+  min-height: clamp(20rem, 30vw, 28rem);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 72% 44%, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.026) 28%, transparent 56%),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.018), transparent 82%);
+}
+
+.portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 70% 46%, transparent 0 32%, rgba(8, 9, 12, 0.18) 58%, var(--color-bg) 88%),
+    linear-gradient(90deg, var(--color-bg) 0%, rgba(8, 9, 12, 0.55) 24%, transparent 48%, rgba(8, 9, 12, 0.58) 78%, var(--color-bg) 100%);
+}
+
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--color-bg) 0%, transparent 24%, transparent 78%, var(--color-bg) 100%),
+    linear-gradient(180deg, var(--color-bg) 0%, transparent 18%, transparent 70%, var(--color-bg) 100%);
+}
+
+.photo {
+  position: absolute;
+  inset: auto 50% -2.25rem auto;
+  z-index: 2;
+  width: auto;
+  max-width: none;
+  height: 116%;
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: contrast(1.08) brightness(1.04) saturate(1.04);
+  mask-image: radial-gradient(ellipse at 62% 48%, black 0 60%, rgba(0, 0, 0, 0.9) 72%, transparent 90%);
+  transform: translateX(50%);
+}
+
+.bioSection {
+  border-block: 1px solid var(--color-section-divider-strong);
+}
+
+.bioGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.sectionTitle {
+  --typography-line-height: 1.08;
+}
+
+.bioCopy {
+  display: grid;
+  gap: 0.95rem;
+  max-inline-size: 46rem;
+}
+
+.bioText {
+  --typography-line-height: 1.68;
+}
+
+.techSection {
+  padding-block-start: clamp(2rem, 4vw, 3rem);
+}
+
+.techHeader,
+.projectsHeader {
+  display: grid;
+  gap: 0.75rem;
+  max-inline-size: min(100%, 42rem);
+  margin-block-end: 1.5rem;
+}
+
+.techLead,
+.projectsLead {
+  --typography-line-height: 1.62;
+}
+
+.techViewport {
+  overflow: hidden;
+  margin-inline: calc((100vw - 100%) / -2);
+  padding-block: 1.25rem;
+}
+
+.techTrack {
+  display: flex;
+  width: max-content;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  animation: techScroll 38s linear infinite;
+}
+
+.techViewport:hover .techTrack {
+  animation-play-state: paused;
+}
+
+.techPill {
+  display: inline-grid;
+  gap: 0.75rem;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  min-width: clamp(5.5rem, 9vw, 8rem);
+  min-height: 5.25rem;
+  opacity: 0.9;
+}
+
+.techLogo {
+  display: block;
+  width: auto;
+  height: clamp(2.25rem, 4vw, 3.25rem);
+  max-width: clamp(5.5rem, 10vw, 8.5rem);
+  object-fit: contain;
+}
+
+.techWordmark {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  --typography-size: clamp(1.45rem, 3vw, 2.15rem);
+  --typography-line-height: 1;
+}
+
+.techName {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  --typography-line-height: 1;
+}
+
+.projectsHeader {
+  margin-block-end: 2rem;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.projectCard {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  min-height: 15rem;
+  padding: 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
+    var(--color-bg-soft);
+}
+
+.projectText {
+  --typography-line-height: 1.58;
+}
+
+@keyframes techScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 2.25rem));
+  }
+}
+
+@media (max-width: 72rem) {
+  .hero,
+  .bioGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    min-height: 21rem;
+  }
+
+  .projectsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .heroSection {
+    padding-block: 4rem;
+  }
+
+  .title {
+    max-inline-size: min(100%, 11.5ch);
+  }
+
+  .identity,
+  .bioCopy,
+  .techHeader,
+  .projectsHeader {
+    max-inline-size: min(100%, 34ch);
+  }
+
+  .portrait {
+    min-height: 16rem;
+  }
+
+  .photo {
+    height: 108%;
+    inset: auto 50% -1.5rem auto;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}

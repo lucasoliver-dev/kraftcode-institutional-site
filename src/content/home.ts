@@ -8,7 +8,6 @@ export const homeContent = {
       "Da estratégia à execução, criamos soluções digitais escaláveis, inteligentes e centradas em resultado.",
     ctas: [
       { label: "Conhecer soluções", href: routes.solutions, variant: "primary" },
-      { label: "Ver produtos", href: routes.products, variant: "secondary" },
     ],
   },
   highlights: [
@@ -37,7 +36,7 @@ export const homeContent = {
   saasShowcase: {
     label: "Nossos produtos",
     title: "SaaS próprios. Focados em IA.",
-    cta: { label: "Ver todos os produtos", href: routes.products },
+    cta: { label: "Conhecer soluções", href: routes.solutions },
   },
   enterprise: {
     label: "Enterprise",

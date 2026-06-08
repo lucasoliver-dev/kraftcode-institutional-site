@@ -1,0 +1,142 @@
+.section {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+}
+
+.header {
+  display: grid;
+  gap: 1.15rem;
+  max-inline-size: min(100%, 45rem);
+  margin-block-end: clamp(2.25rem, 5vw, 4rem);
+}
+
+.title {
+  text-wrap: balance;
+  --typography-weight: 500;
+}
+
+.lead {
+  max-inline-size: min(100%, 36rem);
+  --typography-line-height: 1.65;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.82fr) minmax(0, 1fr);
+  min-height: 19rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+    var(--color-bg-soft);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover,
+.interactive:focus-visible {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-0.125rem);
+}
+
+.interactive:focus-visible {
+  outline: 0.125rem solid rgba(255, 255, 255, 0.55);
+  outline-offset: 0.25rem;
+}
+
+.interactive:hover .image,
+.interactive:focus-visible .image {
+  transform: scale(1.025);
+}
+
+.media {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 64%, rgba(8, 9, 12, 0.46));
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: left top;
+  transition: transform var(--transition-base);
+}
+
+.cardContent {
+  display: grid;
+  gap: 0.65rem;
+  align-content: center;
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.eyebrow {
+  --typography-letter-spacing: 0.06em;
+}
+
+.cardTitle {
+  --typography-line-height: 1.08;
+}
+
+.description,
+.details {
+  --typography-line-height: 1.55;
+}
+
+@media (max-width: 72rem) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 42rem) {
+  .section {
+    padding-block: 4rem;
+  }
+
+  .title {
+    max-inline-size: min(100%, 11.5ch);
+  }
+
+  .lead {
+    max-inline-size: min(100%, 34ch);
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    min-height: 12rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .media::after {
+    background: linear-gradient(180deg, transparent 62%, rgba(8, 9, 12, 0.48));
+  }
+}
